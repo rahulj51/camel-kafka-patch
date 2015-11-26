@@ -129,6 +129,9 @@ public class KafkaConfiguration {
     @UriParam(label = "producer")
     private String keySerializerClass;
 
+    @UriParam(label = "producer", defaultValue = "1000")
+    private Integer reconnectBackOffTimeInMs=1000;
+
     public KafkaConfiguration() {
     }
 
@@ -151,6 +154,7 @@ public class KafkaConfiguration {
         addPropertyIfNotNull(props, "batch.num.messages", getBatchNumMessages());
         addPropertyIfNotNull(props, "send.buffer.bytes", getSendBufferBytes());
         addPropertyIfNotNull(props, "client.id", getClientId());
+        addPropertyIfNotNull(props, "reconnect.backoff.ms", getReconnectBackOffTimeInMs());
         return props;
     }
 
@@ -743,5 +747,9 @@ public class KafkaConfiguration {
      */
     public void setKeySerializerClass(String keySerializerClass) {
         this.keySerializerClass = keySerializerClass;
+    }
+
+    public Integer getReconnectBackOffTimeInMs() {
+        return reconnectBackOffTimeInMs;
     }
 }
