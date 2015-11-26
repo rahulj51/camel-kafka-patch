@@ -1,0 +1,4 @@
+This is the source code for patched version of camel-kafka
+
+Run mvn clean install to build
+Then follow instructions in camel-kafka-repo's README
