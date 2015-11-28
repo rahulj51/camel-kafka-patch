@@ -55,6 +55,7 @@ public class KafkaProducer extends DefaultProducer {
     @Override
     protected void doStart() throws Exception {
         Properties props = getProps();
+        log.info("Producer Configuration: "+ getProps());
         ProducerConfig config = new ProducerConfig(props);
         producer = new Producer<String, String>(config);
     }
